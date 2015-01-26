@@ -284,14 +284,17 @@
     margin-left: -10px;
     background: white;
     transition: transform 0.23s cubic-bezier(1, 0, 0.78, 1);
-    transform-origin: 50%; }
+    transform-origin: 50%;
+    transition-delay: 0.23s;
+    top: 50%;
+    margin-top: -1px; }
     #app_navigation .bar.top {
-      top: 14px; }
+      transform: translateY(-4px); }
     #app_navigation .bar.bottom {
-      bottom: 14px; }
+      transform: translateY(4px); }
     #app_navigation .bar.mid {
-      top: 50%;
-      margin-top: -1px;
+      /*      top: 50%;
+            margin-top: -1px; */
       transition-property: opacity, transform;
       opacity: 1;
       transition-duration: 0.07667s; }
@@ -440,15 +443,24 @@
   width: 70px;
   height: 70px; }
   .app-menu-visible #app_navigation .app-menu-trigger .bar.top {
-    transform: translateY(20px) rotate(-45deg); }
+    transform: translateY(0px) rotate(-45deg); }
   .app-menu-visible #app_navigation .app-menu-trigger .bar.bottom {
-    transform: translateY(-20px) rotate(45deg); }
+    transform: translateY(0px) rotate(45deg); }
   .app-menu-visible #app_navigation .app-menu-trigger .bar.mid {
     transform: scale(0);
     opacity: 0; }
 .app-menu-visible #local_participant {
   color: white;
   text-shadow: none; }
+
+.app-menu-will-close #app_navigation .app-menu-trigger .bar.top,
+.app-menu-will-close #app_navigation .app-menu-trigger .bar.bottom {
+  transition-delay: 0;
+  transition-duration: 0.07667s; }
+.app-menu-will-close #app_navigation .app-menu-trigger .bar.top {
+  transform: translateY(0px) rotate(0); }
+.app-menu-will-close #app_navigation .app-menu-trigger .bar.bottom {
+  transform: translateY(0px) rotate(0); }
 
 @font-face {
   font-family: 'Lato';

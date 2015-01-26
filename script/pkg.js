@@ -3792,8 +3792,16 @@ function curry$(f, bound){
       var cl, responder;
       cl = this._el.classList;
       cl.add('app-menu-visible');
-      return;
+      setTimeout(function(){
+        cl.add('app-menu-will-open');
+        return setTimeout(function(){
+          return cl.add('app-menu-visible');
+        }, cl.remove('app-menu-will-open'), 100);
+      }, 100);
       responder = this.AppMenuResponder;
+      this.ResponderChain.push(this.AppMenuResponder);
+      window.addEventListener('keydown', __blockArrows);
+      return;
       setTimeout(function(){
         cl.add('app-menu-preprep');
         return setTimeout(function(){
@@ -3804,12 +3812,21 @@ function curry$(f, bound){
           }, 500);
         }, 30);
       }, 30);
-      this.ResponderChain.push(this.AppMenuResponder);
-      window.addEventListener('keydown', __blockArrows);
     };
     prototype.HideAppMenu = function(newLocation){
       var cl, scrollerStyle, activeCount;
       cl = this._el.classList;
+      setTimeout(function(){
+        cl.add('app-menu-will-close');
+        return setTimeout(function(){
+          cl.remove('app-menu-visible');
+          return setTimeout(function(){
+            return cl.remove('app-menu-will-close');
+          }, 50);
+        }, 50);
+      }, 100);
+      this.ResponderChain.pop();
+      return;
       cl.remove('app-menu-visible');
       return;
       cl.remove('app-menu-preprep');
@@ -3820,7 +3837,6 @@ function curry$(f, bound){
       setTimeout(function(){
         return scrollerStyle.overflow = 'hidden';
       }, 30);
-      this.ResponderChain.pop();
       window.removeEventListener('keydown', __blockArrows);
       if (newLocation != null) {
         this.Hub.GoTo(newLocation);

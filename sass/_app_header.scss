@@ -110,19 +110,24 @@
 
     transform-origin: 50%;
 
-//    transition-delay: $transition_duration;
+    transition-delay: $transition_duration;
+
+    top: 50%;
+    margin-top: -1px;
 
     &.top {
-      top: 14px;
+//      top: 14px;
+      transform: translateY(-4px);
     }
 
     &.bottom {
-      bottom: 14px;
+//      bottom: 14px;
+      transform: translateY(4px);
     }
 
     &.mid {
-      top: 50%;
-      margin-top: -1px;
+/*      top: 50%;
+      margin-top: -1px; */
       transition-property: opacity, transform;
       opacity: 1;
       transition-duration: $transition_duration_short;

@@ -78,10 +78,26 @@ class Stadium implements Delegation.WithDelegation
     cl = @_el.class-list
 
     cl.add 'app-menu-visible'
+
+    set-timeout(
+      (->
+        cl.add 'app-menu-will-open'
+
+        set-timeout(
+          (->
+            cl.add 'app-menu-visible')
+            cl.remove 'app-menu-will-open'
+          ,100)
+        )
+      ,100)
+
+    responder = @AppMenuResponder
+    @ResponderChain.push @AppMenuResponder
+
+    window.add-event-listener 'keydown', __block-arrows
     return
 
 
-    responder = @AppMenuResponder
 
     set-timeout(
       (->
@@ -103,12 +119,29 @@ class Stadium implements Delegation.WithDelegation
         30
       )
 
-    @ResponderChain.push @AppMenuResponder
-
-    window.add-event-listener 'keydown', __block-arrows
 
   HideAppMenu: (new-location) !~>
     cl = @_el.class-list
+
+    set-timeout(
+      (->
+        cl.add 'app-menu-will-close'
+
+        set-timeout(
+          (->
+            cl.remove 'app-menu-visible'
+
+            set-timeout(
+              (->
+               cl.remove 'app-menu-will-close')
+              ,50)
+          ),
+          50)
+      ),
+      100)
+
+    @ResponderChain.pop!
+    return
 
     cl.remove 'app-menu-visible'
     return
@@ -125,7 +158,7 @@ class Stadium implements Delegation.WithDelegation
         scrollerStyle.overflow = 'hidden'),
       30)
 
-    @ResponderChain.pop!
+
 
     window.remove-event-listener 'keydown', __block-arrows
 
