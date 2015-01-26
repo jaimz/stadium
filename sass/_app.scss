@@ -1,0 +1,33 @@
+@import "palette";
+@import "layout";
+@import "animation";
+
+#app
+{
+  @include fullscreen();
+
+  background-color: darken($very_blue, 20%);
+}
+
+.hub_scroller
+{
+  @include fullscreen();
+
+  overflow: hidden;
+
+  -webkit-transition-property: transform, -webkit-transform;
+  transition-property: transform, -webkit-transform;
+
+  -webkit-transition-duration: $transition_duration;
+  transition-duration: $transition_duration;
+
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+
+  .app-menu-prep &
+  {
+    -webkit-transform: translateX(400px);
+    transform: translateX(400px);
+  }
+}
+

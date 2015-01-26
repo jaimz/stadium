@@ -1,0 +1,159 @@
+@import "palette";
+
+@mixin avatar($sz) {
+  position: absolute;
+
+  height: $sz;
+  width: $sz;
+
+  border-radius: 50%;
+  border: 2px solid $white;
+
+  top: 50%;
+  margin-top: 0 - ($sz / 2);
+}
+
+@mixin status_pip($avatar_size) {
+  bottom: 4px;
+  left: $avatar_size - $status_pip_sz;
+}
+
+.conversation {
+  $avatar_size: 100px;
+
+  -webkit-perspective: 600px;
+  perspective: 600px;
+
+  -webkit-perspective-origin: center left;
+  perspective-origin: center left;
+
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+
+
+  -webkit-transition-duration: $transition_duration;
+          transition-duration: $transition_duration;
+
+  -webkit-transition-timing-function: $bounce_timing_function;
+          transition-timing-function: $bounce_timing_function;
+
+
+  overflow: hidden;
+
+  &.card {
+    &.minimised {
+      display: flex;
+      flex-direction: row;
+      margin: 20px 50px;
+      position: relative;
+
+      border-radius: $avatar_size / 2;
+      padding-right: $avatar_size / 2;
+
+      max-width: 400px;
+
+      &:hover {
+        background-color: $white;
+      }
+
+      .avatar {
+        @include avatar($avatar_size);
+      }
+
+      .status_pip {
+        position: absolute;
+        @include status_pip($avatar_size);
+      }
+
+      .convo_actions {
+        display: none;
+      }
+
+      .history {
+        display: none;
+      }
+
+      .call_actions {
+        display: none;
+      }
+
+      .card_info {
+        $margin_left: 10px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        font-weight: 200;
+
+
+        height: $avatar_size;
+        margin-left: $avatar_size + $margin_left;
+
+        .convo_name {
+          font-size: $header-sz;
+        }
+
+        .last_message {
+          opacity: 0.6;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+
+    }
+  }
+}
+
+#contacts {
+  .conversation {
+    &.card {
+      &.minimised {
+        .avatar {
+          background-color: #9ad8f0;
+          border-color: #04a0dc;
+        }
+      }
+    }
+  }
+
+}
+
+#recents {
+  color: $white;
+
+  .conversation {
+    &.card {
+      &.minimised {
+        display: inline-block;
+
+        $max_width: 330px;
+        $avatar_size: 80px;
+        $margin_left: 10px;
+
+        max-width: $max_width;
+
+        border-radius: $avatar_size / 2;
+        padding-right: $avatar_size / 2;
+
+        .card_info {
+          height: $avatar_size;
+          margin-left: $avatar_size + $margin_left;
+        }
+
+        &:hover {
+          background-color: transparentize($white, 0.7);
+        }
+
+        .avatar {
+          @include avatar($avatar_size);
+        }
+
+        .status_pip {
+          @include status_pip($avatar_size);
+        }
+      }
+    }
+  }
+}

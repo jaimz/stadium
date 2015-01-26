@@ -1,0 +1,124 @@
+@import "measurements";
+@import "z_levels";
+@import "typeography";
+@import "animation";
+@import "layout";
+
+#hub {
+  position: absolute;
+
+  width: 100%;
+  top: $header_height;
+  bottom: 0;
+
+  z-index: $hub_z;
+
+  // TODO(james): Do we still use this perspective stuff?
+  -webkit-perspective: 350;
+  -webkit-perspective-origin: center center;
+
+  perspective: 350px;
+  perspective-origin: center center;
+
+
+  -webkit-transition-property: transform, -webkit-transform;
+  -moz-transition-property: transform, -webkit-transform;
+  -ms-transition-property: transform, -webkit-transform;
+  -o-transition-property: transform, -webkit-transform;
+  transition-property: transform, -webkit-transform;
+
+  -webkit-transition-duration: $transition_duration;
+  -moz-transition-duration: $transition_duration;
+  -ms-transition-duration: $transition_duration;
+  -o-transition-duration: $transition_duration;
+  transition-duration: $transition_duration;
+
+  -webkit-transition-timing-function: $transition_timing_function;
+  transition-timing-function: $transition_timing_function;
+
+
+  .convo_holder {
+    @include fullscreen();
+
+    -webkit-transition-property: -webkit-transform, transform, opacity;
+    transition-property: transform, opacity;
+
+    -webkit-transition-duration: $transition_duration;
+    transition-duration: $transition_duration;
+
+    -webkit-transition-timing-function: $bounce_timing_function;
+    transition-timing-function: $bounce_timing_function;
+
+    opacity: 1;
+
+    -webkit-perspective: 300px;
+    perspective: 300px;
+
+    &.hidden
+    {
+      -webkit-transform: translateZ(100px);
+      transform: translateZ(100px);
+      opacity: 0;
+    }
+
+    &.aside
+    {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+
+    .conversation
+    {
+      @include fullscreen();
+    }
+  }
+}
+
+#hub_bg
+{
+  @include fullscreen();
+
+  background: $off_white;
+
+  -webkit-transition-property: -webkit-transform, opacity;
+  transition-property: transform, opacity;
+
+  -webkit-transition-duration: $transition_duration;
+  transition-duration: $transition_duration;
+
+  -webkit-transition-timing-function: $bounce_timing_function;
+  transition-timing-function: $bounce_timing_function;
+}
+
+#drag_holder
+{
+  $dragging-shadow: 0 60px 80px rgba(0,0,0,0.4);
+
+  @include fullscreen();
+
+  // TODO(james): rationalize grad indicies
+  z-index: 10;
+
+  display: none;
+
+
+  // Applies when a conversation is being dragged from a card -> fullscreen
+  .conversation {
+    position: absolute;
+
+    box-shadow: $dragging-shadow;
+
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  // Applies when a conversation is being dragged from fullscreen -> a card
+  .conversation.maximised.is-dragged
+  {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,175 @@
+@import "measurements";
+@import "palette";
+@import "z_levels";
+@import "animation";
+
+
+#app_header {
+  $padding_bottom: 4px;
+
+  height: $header_height;
+  background-color: white;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  padding-bottom: $padding_bottom;
+
+  position: relative;
+
+  transition-property: background-color;
+  transition-duration: $transition_duration;
+  transition-timing-function: $transition_timing_function;
+
+  .backing_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url(../img/avatar.jpeg);
+    background-size: cover;
+    background-position: center 10%;
+    -webkit-filter: blur(14px);
+    filter: blur(14px);
+    opacity: 0.4;
+  }
+}
+
+
+
+
+// TODO(james): move into _avatar.scss?
+#my_avatar {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: $header_height;
+  height: $header_height;
+  margin-left: 0 - ($header_height / 2);
+
+  background-image: url(../img/avatar.jpeg);
+  background-size: cover;
+
+  border-radius: 50%;
+  z-index: $logo_z;
+
+  border: 1px solid $white;
+  box-shadow: 0 0 0 1px $very_blue;
+}
+
+#app_navigation {
+  $nav_button_sz: 40px;
+
+  margin-left: $std_left_margin;
+
+  position: absolute;
+  top: 20px;
+
+  z-index: $nav_buttons_z;
+
+  .navigation-trigger {
+    display: inline-block;
+    position: relative;
+    width: $nav_button_sz;
+    height: $nav_button_sz;
+    border-radius: 50%;
+    box-shadow: 0 1px 0px 0px rgba(0,0,0,0.4), 0px 1px 1px rgba(255,255,255,0.6) inset;//, 0 4px 8px rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.4);
+
+
+    // TODO(james): Find a way of doing this with just a transform transition
+    transition-property: width, height;
+    transition-duration: $transition_duration;
+    transition-timing-function: $transition_timing_function;
+
+    a {
+      position: absolute;
+      display: block;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .bar {
+    $width: 20px;
+
+    position: absolute;
+
+    width: $width;
+    height: 2px;
+    left: 50%;
+    margin-left:  0 - ($width / 2);
+
+    background: $white;
+
+    transition: transform $transition_duration $transition_timing_function;
+
+    transform-origin: 50%;
+
+//    transition-delay: $transition_duration;
+
+    &.top {
+      top: 14px;
+    }
+
+    &.bottom {
+      bottom: 14px;
+    }
+
+    &.mid {
+      top: 50%;
+      margin-top: -1px;
+      transition-property: opacity, transform;
+      opacity: 1;
+      transition-duration: $transition_duration_short;
+    }
+  }
+
+}
+
+
+#local_participant {
+  $right_margin: 55px;
+
+  display: flex;
+  flex-direction: column;
+  vertical-align: bottom;
+  justify-content: flex-end;
+
+  height: 100%;
+
+  color: $dark_title_col;
+  font-weight: lighter;
+
+  margin-right: $right_margin;
+
+  position: relative;
+
+  text-shadow: 0 0 2px $white;
+
+  .name {
+    font-size: $header_sz;
+  }
+
+  .avatar {
+    position: absolute;
+    background-image: url(../img/avatar.jpeg);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    opacity: 0.3;
+
+    top: -7px;
+    right: -25px - $right_margin;
+  }
+}

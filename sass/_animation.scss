@@ -1,0 +1,38 @@
+@import "palette";
+
+$transition_duration: 0.23s;
+//$transition_duration: 1s;
+$transition_duration_short: $transition_duration / 3;
+
+
+$transition_timing_function: cubic-bezier(1,0,0.78,1);
+$bounce_timing_function: cubic-bezier(.05,.67,.15,1.32);
+
+$foreground_transition_duration: 0.36s;
+$foreground_transition_timing_function: cubic-bezier(0.33,0,0,1);
+
+@-webkit-keyframes callingAvatar
+{
+  0% { left: 0%; top: 0%; margin-top: 0px; margin-left: 0px; border-radius: 0%; box-shadow: none; border: 1px solid $white; }
+  50% { left: 0%; top: 50%; margin-top: -240px; margin-left: 0px; border-radius: 50%; box-shadow: none; border: 8px solid $white; }
+  100% { left: 50%; top: 50%; margin-top: -240px; margin-left: -159px; border-radius: 50%; box-shadow: 0 0 32px rgba(0,0,0,0.4); border: 8px solid $white; }
+}
+
+@keyframes callingAvatar
+{
+  0% { left: 0%; top: 0%; margin-top: 0px; margin-left: 0px; border-radius: 0%; box-shadow: none; border: 1px solid $white; }
+  50% { left: 0%; top: 50%; margin-top: -240px; margin-left: 0px; border-radius: 50%; box-shadow: none; border: 8px solid $white; }
+  100% { left: 50%; top: 50%; margin-top: -240px; margin-left: -159px; border-radius: 50%; box-shadow: 0 0 32px rgba(0,0,0,0.4); border: 8px solid $white; }
+}
+
+@-webkit-keyframes ringingPulse
+{
+  0% { -webkit-transform: scale(1); }
+  100% { -webkit-transform: scale(1.1); }
+}
+
+@keyframes ringingPulse
+{
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}

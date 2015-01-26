@@ -1,0 +1,14 @@
+@import "measurements";
+@import "z_levels";
+
+#app_logo {
+  position: absolute;
+  left: 50%;
+  margin-left: 0 - ($header_height / 2);
+  width: $header_height;
+  height: $header_height;
+
+  background-image: url(../img/stadium_logo2.png);
+
+  z-index: $logo_z;
+}

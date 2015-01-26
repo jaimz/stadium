@@ -1,0 +1,19 @@
+@import "measurements";
+@import "palette";
+
+.status_pip {
+  $border_width: 1px;
+
+  display: none;
+  width: $status_pip_sz;
+  height: $status_pip_sz;
+
+  border-radius: 50%;
+
+  &.online {
+    display: block;
+    background-color: $presence_green;
+    border: $border_width solid $white;
+    box-shadow: 0 0 8px $presence_green;
+  }
+}

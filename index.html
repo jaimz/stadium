@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stadium</title>
+  <link rel="stylesheet" type="text/css" href="./css/base.css"></link>
+</head>
+<body id="app">
+  <header id="app_header">
+    <div class="backing_img"></div>
+    <section id="local_participant">
+      <h1 class="name">James O'Brien</h1>
+      <h2 class="mood_message">Hungry</h2>
+    </section>
+  </header>
+
+  <nav id="app_navigation">
+    <ul>
+      <li class='app-menu-trigger navigation-trigger'>
+        <div class="bar top"></div>
+        <div class="bar mid"></div>
+        <div class="bar bottom"></div>
+        <a href='#app_menu' data-nav-cmd='toggleAppMenu'></a>
+      </li>
+    </ul>
+  </nav>
+
+  <figure class="avatar" id="my_avatar"></figure>
+
+  <section id="hub" class="starting">
+    <section id="conversations">
+      <section id="recents"></section>
+      <section id="contacts" class="nav_stack">
+        <nav id="contacts_switch" class="switches">
+          <h2 class="switch selected" data-switch-name="favourites">favourites</h2>
+          <h2 class="switch" data-switch-name="everyone">everyone</h2>
+          <section id="favourites" class="nav_item visible conversation_list"></section>
+          <section id="all_contacts" class="nav_item off_right conversation_list" data-panel-name="everyone"></section>
+        </nav>
+      </section>
+    </section>
+  </section>
+
+<!--
+  <section class="hub_scroller">
+    <section id="hub" class="starting">
+      <header>
+        <div id="backing_img"></div>
+
+        <section id="local_participant">
+          <h1 class="name">James O'Brien</h1>
+          <h2 class="mood_message">Hungry</h2>
+
+        </section>
+      </header>
+      <section id="conversations">
+        <section id="recents">
+          <div class="conversation card minimised">
+            <div class="participants"></div>
+            <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+            <div class='status_pip online'></div>
+            <div class="card_info">
+              <div class="convo_name">James O'Brien</div>
+              <div class="last_message">Howzit! Do you have those things for the thing?</div>
+            </div>
+
+            <div class="convo_actions">
+              <div class="action" data-cmd-id='makeVideoCall'>call</div>
+              <div class="action" data-cmd-id='makeAudioCall'>voice call</div>
+              <div class="action" data-cmd-id='addParticipant'>add people</div>
+            </div>
+
+            <div class="history">
+              <div class="messages">
+                <div class='day'>
+                  <div class='daystamp' >Wed 18 December</div>
+                  <div class="sermon">
+                    <div class="msg_avatar"></div>
+                    <div class="content">
+                      <div class="author">James O'Brien</div>
+                      <div class="message">Here is a message</div>
+                      <div class="message">And another shortly after</div>
+                    </div>
+                    <div class="timestamp">
+                      10:30
+                    </div>
+                  </div>
+                  <div class="sermon">
+                    <div class="msg_avatar"></div>
+                    <div class="content">
+                      <div class="author">Rania Leliou</div>
+                      <div class="message">Yes, they are awesome!</div>
+                    </div>
+                    <div class="timestamp">10:26</div>
+                  </div>
+                </div>
+
+                <div class='day'>
+                  <div class="daystamp">Thu 19 December</div>
+                  <div class="sermon">
+                    <div class="msg_avatar"></div>
+                    <div class="content">
+                      <div class="author">Ahmed Zaman</div>
+                      <div class="message">We have to walk around Prague wearing them. :)</div>
+                      <div class="message">On it :)</div>
+                    </div>
+                    <div class="timestamp">
+                      10:26
+                    </div>
+                  </div>
+                  <div class="sermon">
+                    <div class="msg_avatar"></div>
+                    <div class="content">
+                      <div class="author">Felicity Herst</div>
+                      <div class="message">send pics! I'm wfh and wanna see :P</div>
+                    </div>
+                    <div class="timestamp">
+                      10:25
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="message_editor">
+                <input type="text" class="message_input"></input>
+              </div>
+            </div>
+            <div class="call_actions">
+              <div class="action" data-cmd-id="addParticipant">add</div>
+              <div class="action" data-cmd-id="toggleIMs">im</div>
+              <div class="action" data-cmd-id="endCall">endCall</div>
+            </div>
+          </div>
+        </section>
+        <section id="contacts" class='nav_stack'>
+          <nav id="contacts_switch" class='switches'>
+              <h2 class="switch selected" data-switch-name="favourites">favourites</h2>
+              <h2 class="switch" data-switch-name="everyone">everyone</h2>
+          </nav>
+          <section id="favourites" class="nav_item visible conversation_list" data-panel-name="favourites">
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+
+            <div class="conversation card minimised">
+              <div class="participants"></div>
+              <div class="avatar" style='background-image: url(./img/avatar.jpeg)'></div>
+              <div class='status_pip online'></div>
+              <div class="card_info">
+                <div class="convo_name">James O'Brien</div>
+                <div class="last_message">Howzit! Do you have those things for the thing?</div>
+              </div>
+            </div>
+          </section>
+          <section id="all_contacts"  class="nav_item off_right conversation_list"  data-panel-name="everyone"></section>
+        </section>
+      </section>
+    </section>
+  </section>
+-->
+
+
+  <section id="AppMenu" class="app-menu">
+    <div class="app-menu-item">Settings</div>
+    <div class="app-menu-item">Help</div>
+    <div class="app-menu-item location focused" data-convo-id='home'>Home</div>
+  </section>
+
+
+  <script type='text/javascript' src='./script/pkg.js'></script>
+</body>
+</html>

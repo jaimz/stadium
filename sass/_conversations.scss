@@ -1,0 +1,51 @@
+@import "measurements";
+@import "animation";
+
+#conversations {
+  position: absolute;
+  top: 0;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: column;
+  flex-direction: column;
+
+
+  -webkit-transform-origin: 100% (100% * (1 - $app_menu_item_scale));
+  transform-origin: 100% (100% * (1 - $app_menu_item_scale));
+
+  transition-property: transform, -webkit-transform;
+  transition-duration: $transition_duration;
+  transition-timing-function: $transition_timing_function;
+
+  #recents {
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+
+    overflow-y: auto;
+
+    background-color: $very_blue;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) inset;
+  }
+
+  #contacts {
+    -webkit-flex: 1 0 auto;
+    flex: 1 0  auto;
+
+    background-color: $off_white;
+  }
+}
+
+.conversation_list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  overflow: scroll;
+}

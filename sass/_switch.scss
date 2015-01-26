@@ -1,0 +1,69 @@
+@import "palette";
+@import "typeography";
+@import "animation";
+
+$nav_switch_height: 100px;
+
+.nav_stack {
+  position: relative;
+
+  .switches {
+    height: $nav_switch_height;
+    line-height: $nav_switch_height;
+
+    font-weight: 200;
+
+    h1, h2 {
+      display: inline-block;
+      height: $nav_switch_height;
+      margin-right: 1rem;
+    }
+
+    h1 {
+      color: $dark_title_col;
+      font-size: $big_header_sz;
+    }
+
+    h2 {
+      font-size: $big_header_sz / 2;
+    }
+
+    .switch {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.selected {
+        color: $very_blue;
+        cursor: normal;
+        font-size: $big_header_sz;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .nav_item {
+    position: absolute;
+    top: $nav_switch_height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition-property: transform;
+    transition-timing-function: $transition_timing_function;
+    transition-duration: $transition_duration;
+
+    &.off_left {
+      transform: translateX(-100%);
+    }
+
+    &.off_right {
+      transform: translateX(100%);
+    }
+  }
+}
